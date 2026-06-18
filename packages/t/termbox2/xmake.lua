@@ -5,7 +5,11 @@ package("termbox2")
 	add_versions("2.5.0", "d51f304dac421b62115e6ea5faa7a4c019e6c3cfca4c4866f00792130819a1a7")
 	add_versions("2.0.0", "da2e8c2f30d784e9b3cdfea4332257beef471976556b9ddb6e994ca5adf389af")
 
+	add_configs("truecolor", {description = "Truecolor support", default = false})
+
 	on_install("linux", function (package)
+		local truecolor = package:config("truecolor") or false
+
 		local source_file = io.open("termbox2.c", "w")
 		source_file:write([[
 #define TB_IMPL
@@ -26,6 +30,9 @@ target("termbox2")
 	add_files("termbox2.c")
 	add_headerfiles("termbox2.h", {public=true})
 ]])
+		if truecolor then
+			xmake:write([[add_defines("TB_OPT_TRUECOLOR", {public=true})]]
+		end
 		xmake:close()
 		import("package.tools.xmake").install(package)
 	end)
