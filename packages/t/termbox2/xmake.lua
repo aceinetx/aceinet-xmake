@@ -7,6 +7,13 @@ package("termbox2")
 
 	add_configs("truecolor", {description = "Truecolor support", default = false})
 
+	on_load(function (package)
+		local truecolor = package:config("truecolor") or false
+		if truecolor then
+			package:add("defines", "TB_OPT_TRUECOLOR")
+		end
+	end)
+
 	on_install("linux", function (package)
 		local truecolor = package:config("truecolor") or false
 
