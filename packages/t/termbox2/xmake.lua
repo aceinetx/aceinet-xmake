@@ -1,4 +1,4 @@
-package("tinygl")
+package("termbox2")
 	set_description("terminal I/O library")
 	add_urls("https://github.com/termbox/termbox2/archive/refs/tags/v$(version).zip", "https://github.com/termbox/termbox2.git")
 
