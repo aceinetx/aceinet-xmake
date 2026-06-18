@@ -31,7 +31,7 @@ target("termbox2")
 	add_headerfiles("termbox2.h", {public=true})
 ]])
 		if truecolor then
-			xmake:write([[add_defines("TB_OPT_TRUECOLOR", {public=true})]]
+			xmake:write([[add_defines("TB_OPT_TRUECOLOR", {public=true})]])
 		end
 		xmake:close()
 		import("package.tools.xmake").install(package)
