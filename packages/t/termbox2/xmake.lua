@@ -43,4 +43,3 @@ target("termbox2")
 		xmake:close()
 		import("package.tools.xmake").install(package)
 	end)
-
